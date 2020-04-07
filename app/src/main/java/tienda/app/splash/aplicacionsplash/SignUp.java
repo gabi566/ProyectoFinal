@@ -6,35 +6,32 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_ir_inicioSesion,crear_cuenta;
+    EditText etnombre,etusuario,etpassword,etedad;
+    Button btn_registrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        btn_ir_inicioSesion=findViewById(R.id.btn_ir_inicioSesion);
-        crear_cuenta=findViewById(R.id.crear_cuenta);
+        etnombre = findViewById(R.id.et_nombre);
+        etusuario = findViewById(R.id.et_usuario);
+        etpassword = findViewById(R.id.et_password);
+        etedad = findViewById(R.id.et_edad);
+
+        btn_registrar = (Button) findViewById(R.id.btn_registrar);
+
+        btn_registrar.setOnClickListener(this);
 
 
+    }
 
-        btn_ir_inicioSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignUp.this,Login.class));
-                finish();
-            }
-        });
+    @Override
+    public void onClick(View view) {
 
-        crear_cuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SignUp.this, "Registrar Usuario", Toast.LENGTH_SHORT).show();
-                //Aquí codigo
-            }
-        });
     }
 }

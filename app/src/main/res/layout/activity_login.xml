@@ -29,7 +29,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/et_correo"
+                android:id="@+id/et_password"
                 android:hint="Correo electrónico"
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="15dp"
