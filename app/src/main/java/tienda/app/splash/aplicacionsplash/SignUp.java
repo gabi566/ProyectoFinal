@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     EditText etnombre,etusuario,etpassword,etedad;
-    Button btn_registrar;
+    Button btn_registrar,btn_ir_inicioSesion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +24,23 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         etedad = findViewById(R.id.et_edad);
 
         btn_registrar = (Button) findViewById(R.id.btn_registrar);
+        btn_ir_inicioSesion = (Button) findViewById(R.id.btn_ir_inicioSesion);
 
         btn_registrar.setOnClickListener(this);
 
-
+        btn_ir_inicioSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUp.this,Login.class));
+                finish();
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
 
     }
+
+
 }
