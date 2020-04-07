@@ -1,4 +1,4 @@
-package luisito.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash;
 
 import org.junit.Test;
 

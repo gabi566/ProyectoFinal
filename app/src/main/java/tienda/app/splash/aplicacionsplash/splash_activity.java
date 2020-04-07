@@ -1,16 +1,15 @@
-package luisito.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 public class splash_activity extends Activity {
 
-    private final int DURACION_SPLASH = 3000;
+    private final int DURACION_SPLASH = 1500;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

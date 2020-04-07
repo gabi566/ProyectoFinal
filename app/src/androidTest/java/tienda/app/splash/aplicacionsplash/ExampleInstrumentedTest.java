@@ -1,4 +1,4 @@
-package luisito.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
