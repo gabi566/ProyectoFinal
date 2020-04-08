@@ -29,9 +29,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/et_password"
-                android:hint="Correo electrónico"
-                android:inputType="textEmailAddress"
+                android:id="@+id/et_correo"
+                android:hint="Nombre de Usuario"
+                android:inputType="text"
                 android:layout_marginBottom="15dp"
                 android:textColor="#fff"
                 android:layout_marginLeft="20dp"
@@ -45,7 +45,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/et_passwr"
+                android:id="@+id/et_password"
                 android:hint="Contraseña"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
@@ -68,7 +68,7 @@
                 android:layout_marginBottom="30dp"
                 android:text="¿Olvidaste tu contraseña?"/>
             <Button
-                android:id="@+id/iniciar_sesion"
+                android:id="@+id/btn_iniciar_sesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
