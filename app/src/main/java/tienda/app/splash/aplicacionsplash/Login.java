@@ -19,7 +19,6 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity {
     Button btn_ir_crearCuenta;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this,SignUp.class));
-                finish();
             }
         });
 
@@ -51,10 +49,8 @@ public class Login extends AppCompatActivity {
                             boolean ok = jsonrespuesta.getBoolean("success");
                             if(ok==true) {
                                 String nombre = jsonrespuesta.getString("nombre");
-                                int edad = jsonrespuesta.getInt("edad");
                                 Intent bienvenido = new Intent(Login.this, MenuPrincipal.class);
                                 bienvenido.putExtra("nombre",nombre);
-                                bienvenido.putExtra("edad",edad);
                                 Login.this.startActivity(bienvenido);
                             }else {
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);

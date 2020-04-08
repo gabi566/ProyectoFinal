@@ -6,10 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 public class splash_activity extends Activity {
 
     private final int DURACION_SPLASH = 1500;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class splash_activity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash_activity);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar.setVisibility(progressBar.VISIBLE);
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
