@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        getSupportActionBar().hide();
 
         etnombre = findViewById(R.id.et_nombre);
         etusuario = findViewById(R.id.et_usuario);
@@ -43,14 +45,16 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        String usuariotest = etusuario.getText().toString();
+
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nombre = etnombre.getText().toString().trim();
+                String usuario = etusuario.getText().toString().trim();
+                String clave = etpassword.getText().toString().trim();
+                int edad = Integer.parseInt(etedad.getText().toString().trim());
 
-                String nombre = etnombre.getText().toString();
-                String usuario = etusuario.getText().toString();
-                String clave = etpassword.getText().toString();
-                int edad = Integer.parseInt(etedad.getText().toString());
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
@@ -67,8 +71,8 @@ public class SignUp extends AppCompatActivity {
                                 alerta.setMessage("Fallo al Registrarse").setNegativeButton("Reintentar",null).create().show();
                             }
 
-                        }catch (JSONException e) {
-                            e.getMessage();
+                        }catch (Exception e) {
+                            Toast.makeText(SignUp.this, "Complete todos los campos...", Toast.LENGTH_LONG).show();
                         }
                     }
                 };
