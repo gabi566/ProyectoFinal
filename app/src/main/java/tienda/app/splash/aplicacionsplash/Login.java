@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -46,6 +47,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this,SignUp.class));
+                finish();
             }
         });
 
@@ -70,6 +72,10 @@ public class Login extends AppCompatActivity {
                 guardarEstadoButtom();
                 final String usuario = usuariot.getText().toString();
                 final String clave = clavet.getText().toString();
+
+
+
+
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -77,15 +83,17 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonrespuesta = new JSONObject(response);
                             boolean ok = jsonrespuesta.getBoolean("success");
                             if(ok==true) {
-                                String nombre = jsonrespuesta.getString("nombre");
-
                                 Intent bienvenido = new Intent(Login.this, MenuPrincipal.class);
-                                bienvenido.putExtra("nombre",nombre);
                                 Login.this.startActivity(bienvenido);
                                 finish();
+                            }else if
+                                    (usuario.isEmpty()){
+                                    usuariot.setError("Usuario Obligatorio");
+                            }else if(clave.isEmpty()){
+                                    clavet.setError("Contraseña Obligatoria");
                             }else {
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
-                                alerta.setMessage("Fallo al iniciar").setNegativeButton("Reintentar",null).create().show();
+                                alerta.setMessage("Usuario o contraseña incorrectos").setNegativeButton("Reintentar",null).create().show();
                             }
                         }catch (JSONException e){
                             e.getMessage();
