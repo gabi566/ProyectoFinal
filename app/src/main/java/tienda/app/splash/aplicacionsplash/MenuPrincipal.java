@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class MenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+
 
         prefs = getSharedPreferences("tienda.app.splash.aplicacionsplash.SharedPreferences", Context.MODE_PRIVATE);
 
@@ -77,16 +80,13 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent intent = new Intent(this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
         try {
-            //Se habilita BD para escucha
             HelperBD helper = new HelperBD(this);
             SQLiteDatabase db = helper.getReadableDatabase();
-            //Se ejecuta una sentencia SQL que elimina todos los registros de la tabla
             db.execSQL(EstructuraBD.SQL_DELETE_REGISTERS);
             onCreate(null);
-        }catch (Exception e){//En caso de error de Activity producido
-            //Se informa por pantalla que el carrito ha sido vaciado
-            //Se inicia la Activity MainActivity
+        }catch (Exception e){
 
         }//Fin Try-Catch
     }
@@ -94,5 +94,33 @@ public class MenuPrincipal extends AppCompatActivity {
     private void removeSharedPreferences(){
         prefs.edit().clear().apply();
     }
+
+
+
+    boolean doubleBackPressed=false;
+    @Override
+    public void onBackPressed() {
+
+        if(doubleBackPressed) {
+            super.onBackPressed();
+        }
+        else {
+            doubleBackPressed=true;
+            final CoordinatorLayout coordinatorLayout = (CoordinatorLayout)findViewById(R.id.coordinatorLayout);
+
+            Snackbar.make(coordinatorLayout,getString(R.string.pressbackagain), Snackbar.LENGTH_SHORT).show();
+            new android.os.Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackPressed=false;
+                }
+            },2000);
+
+        }
+
+    }
+
+
+
 }//Fin Class
 

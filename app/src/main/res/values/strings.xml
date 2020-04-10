@@ -7,4 +7,5 @@
     </string-array>
 
     <string name="item2">Cerrar Sesion</string>
+    <string name="pressbackagain">Presione dos veces para salir</string>
 </resources>

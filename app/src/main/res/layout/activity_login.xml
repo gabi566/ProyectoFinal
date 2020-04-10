@@ -64,13 +64,14 @@
 
             <RadioButton
                 android:id="@+id/Login_Sesion"
-                android:layout_width="238dp"
+                android:layout_width="177dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/input"
                 android:buttonTint="@color/white"
                 android:checked="false"
                 android:hint="No Cerrar Sesión"
+                android:textAlignment="textStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF"
@@ -81,6 +82,7 @@
                 android:id="@+id/btn_iniciar_sesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginRight="20dp"

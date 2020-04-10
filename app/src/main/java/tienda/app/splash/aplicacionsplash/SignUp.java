@@ -1,5 +1,6 @@
 package tienda.app.splash.aplicacionsplash;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +28,8 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
         etnombre = findViewById(R.id.et_nombre);
@@ -51,6 +55,8 @@ public class SignUp extends AppCompatActivity {
                 final String clave = etpassword.getText().toString().trim();
                 int edad = Integer.parseInt(etedad.getText().toString().trim());
 
+                AlertDialog.Builder alerta3 = new AlertDialog.Builder(SignUp.this);
+                alerta3.setMessage("Registrando cuenta").setNegativeButton("aceptar",null).create().show();
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
@@ -58,20 +64,13 @@ public class SignUp extends AppCompatActivity {
                         try {
                             JSONObject jsonrespuesta = new JSONObject(response);
                             boolean ok = jsonrespuesta.getBoolean("success");
-
-                            if (nombre.isEmpty()) {
-                                etnombre.setError("Usuario Obligatorio");
-                            } else if (usuario.isEmpty()) {
-                                etusuario.setError("Contraseña Obligatoria");
-                            } else if (clave.isEmpty()) {
-                                etpassword.setError("cdcd");
-                            } else if (ok == true) {
+                             if (ok == true) {
                                 Intent i = new Intent(SignUp.this, Login.class);
                                 SignUp.this.startActivity(i);
-                                SignUp.this.finish();
+                                finish();
                             } else {
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(SignUp.this);
-                                alerta.setMessage("Fallo al Registrarse").setNegativeButton("Reintentar", null).create().show();
+                                alerta.setMessage("Favor Completar todos los campos").setNegativeButton("Aceptar", null).create().show();
                             }
                         }catch (Exception e) {
                             AlertDialog.Builder alerta2 = new AlertDialog.Builder(SignUp.this);
