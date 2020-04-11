@@ -69,16 +69,12 @@ public class Login extends AppCompatActivity {
         });
 
 
-
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 guardarEstadoButtom();
                 final String usuario = usuariot.getText().toString();
                 final String clave = clavet.getText().toString();
-
-
-
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
@@ -87,15 +83,17 @@ public class Login extends AppCompatActivity {
                         try {
                             JSONObject jsonrespuesta = new JSONObject(response);
                             boolean ok = jsonrespuesta.getBoolean("success");
-                            if(ok==true) {
+                            if
+                            (usuario.isEmpty()){
+                                usuariot.setError("Usuario Obligatorio");
+                            }else if(clave.isEmpty()){
+                                clavet.setError("Contraseña Obligatoria");
+                            }else if(ok==true) {
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
+                                alerta.setMessage("Cargando...").setNegativeButton("Reintentar",null).create().show();
                                 Intent bienvenido = new Intent(Login.this, MenuPrincipal.class);
                                 Login.this.startActivity(bienvenido);
                                 finish();
-                            }else if
-                                    (usuario.isEmpty()){
-                                    usuariot.setError("Usuario Obligatorio");
-                            }else if(clave.isEmpty()){
-                                    clavet.setError("Contraseña Obligatoria");
                             }else {
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                                 alerta.setMessage("Usuario o contraseña incorrectos").setNegativeButton("Reintentar",null).create().show();

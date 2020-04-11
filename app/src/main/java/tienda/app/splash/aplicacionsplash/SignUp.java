@@ -53,24 +53,30 @@ public class SignUp extends AppCompatActivity {
                 final String nombre = etnombre.getText().toString().trim();
                 final String usuario = etusuario.getText().toString().trim();
                 final String clave = etpassword.getText().toString().trim();
-                int edad = Integer.parseInt(etedad.getText().toString().trim());
+                final String edad = etedad.getText().toString().trim();
 
-                AlertDialog.Builder alerta3 = new AlertDialog.Builder(SignUp.this);
-                alerta3.setMessage("Registrando cuenta").setNegativeButton("aceptar",null).create().show();
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonrespuesta = new JSONObject(response);
+
                             boolean ok = jsonrespuesta.getBoolean("success");
-                             if (ok == true) {
+                            if (nombre.isEmpty()){
+                                etnombre.setError("Nombre Obligatorio");
+                            } else if (usuario.isEmpty()){
+                                etusuario.setError("Usuario Obligatorio");
+                            }else if (clave.isEmpty()){
+                                etpassword.setError("Contraseña Obligatorio");
+                            } else if (edad.isEmpty()){
+                                etedad.setError("Telefono Obligatorio");
+                            } else if (ok == true) {
+                                AlertDialog.Builder alerta3 = new AlertDialog.Builder(SignUp.this);
+                                alerta3.setMessage("Registrando cuenta...").setNegativeButton("Aceptar",null).create().show();
                                 Intent i = new Intent(SignUp.this, Login.class);
                                 SignUp.this.startActivity(i);
                                 finish();
-                            } else {
-                                AlertDialog.Builder alerta = new AlertDialog.Builder(SignUp.this);
-                                alerta.setMessage("Favor Completar todos los campos").setNegativeButton("Aceptar", null).create().show();
                             }
                         }catch (Exception e) {
                             AlertDialog.Builder alerta2 = new AlertDialog.Builder(SignUp.this);
