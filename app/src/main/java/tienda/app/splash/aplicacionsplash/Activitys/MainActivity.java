@@ -9,10 +9,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import tienda.app.splash.aplicacionsplash.R;
+import tienda.app.splash.aplicacionsplash.WebViews.AcercaActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button ir_login;
+    Button ir_login,btn_acerca;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-
 
 
         ir_login=findViewById(R.id.ir_login);
@@ -31,5 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btn_acerca=findViewById(R.id.btn_acerca);
+        btn_acerca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, AcercaActivity.class));
+            }
+        });
+
+
     }
 }

@@ -61,7 +61,6 @@ public class SignUp extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonrespuesta = new JSONObject(response);
-
                             boolean ok = jsonrespuesta.getBoolean("success");
                             if (nombre.isEmpty()){
                                 etnombre.setError("Nombre Obligatorio");

@@ -42,7 +42,9 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#fff"
-                android:textColorHint="#ccc" />
+                android:textColorHint="#ccc"
+                android:drawableRight="@drawable/ic_action_user"/>
+
 
             <EditText
                 android:id="@+id/et_password"
@@ -50,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/input"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
@@ -59,7 +61,8 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#fff"
-                android:textColorHint="#ccc" />
+                android:textColorHint="#ccc"
+                android:drawableRight="@drawable/ic_action_key"/>
 
 
             <RadioButton

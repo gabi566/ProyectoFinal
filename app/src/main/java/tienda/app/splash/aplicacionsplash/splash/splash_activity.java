@@ -13,7 +13,7 @@ import tienda.app.splash.aplicacionsplash.R;
 
 public class splash_activity extends Activity {
 
-    private final int DURACION_SPLASH = 1500;
+    private final int DURACION_SPLASH = 2000;
     private ProgressBar progressBar;
 
     @Override
