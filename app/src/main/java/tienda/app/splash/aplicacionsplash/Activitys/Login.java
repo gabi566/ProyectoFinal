@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.Activitys;
 
 
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,6 +19,9 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import tienda.app.splash.aplicacionsplash.clases.LoginRequest;
+import tienda.app.splash.aplicacionsplash.R;
 
 public class Login extends AppCompatActivity {
     Button btn_ir_crearCuenta;

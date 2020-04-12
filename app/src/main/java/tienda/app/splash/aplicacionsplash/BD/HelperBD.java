@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.BD;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

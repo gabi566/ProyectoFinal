@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.Activitys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import tienda.app.splash.aplicacionsplash.BD.Producto;
+import tienda.app.splash.aplicacionsplash.R;
 
 /**CLASE ENCARGADA DE MOSTRAR LOS PRODUCTOS DE CADA TIPO, VISUALIZADOS EN ACTIVITY2
  * @version 20/09/2018

@@ -1,16 +1,18 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.Activitys;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static java.security.AccessController.getContext;
+import tienda.app.splash.aplicacionsplash.BD.EstructuraBD;
+import tienda.app.splash.aplicacionsplash.BD.HelperBD;
+import tienda.app.splash.aplicacionsplash.BD.Producto;
+import tienda.app.splash.aplicacionsplash.R;
 
 /**
  * CLASE QUE CORRESPONDE AL ACTIVITY 3 Y SUS COMPONENTES

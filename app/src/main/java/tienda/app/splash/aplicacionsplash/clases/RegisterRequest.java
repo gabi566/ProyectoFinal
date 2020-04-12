@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.clases;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;

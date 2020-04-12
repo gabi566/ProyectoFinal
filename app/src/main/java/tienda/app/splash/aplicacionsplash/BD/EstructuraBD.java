@@ -1,6 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
-
-import android.provider.BaseColumns;
+package tienda.app.splash.aplicacionsplash.BD;
 
 /**
  * Clase encargada de la definición de la estructura de la base de datos SQLite

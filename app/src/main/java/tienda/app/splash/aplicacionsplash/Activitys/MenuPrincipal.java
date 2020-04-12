@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.Activitys;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import tienda.app.splash.aplicacionsplash.BD.EstructuraBD;
+import tienda.app.splash.aplicacionsplash.BD.HelperBD;
+import tienda.app.splash.aplicacionsplash.R;
 
 
 public class MenuPrincipal extends AppCompatActivity {

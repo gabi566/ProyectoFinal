@@ -1,4 +1,6 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.BD;
+
+import tienda.app.splash.aplicacionsplash.R;
 
 public class Producto {
     //DECLARACIÓN DE VARIABLES
@@ -9,7 +11,7 @@ public class Producto {
 
     //DECLARACIÓN DE ARREGLO CONSTANTE QUE CONTIENE PRODUCTOS DEL TIPO CERVEZAS
     public final static Producto cervezas[]={
-            new Producto("Lager","Deliciosa Cerveza Rubia",R.drawable.lager,2800),
+            new Producto("Lager","Deliciosa Cerveza Rubia", R.drawable.lager,2800),
             new Producto("Ambar", "Exquisita Cerveza Ambar",R.drawable.ambar,2200),
             new Producto("Bock","Sabrosa Cerveza Negra",R.drawable.bock,3000)
     };

@@ -1,4 +1,4 @@
-package tienda.app.splash.aplicacionsplash;
+package tienda.app.splash.aplicacionsplash.Activitys;
 
 
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import tienda.app.splash.aplicacionsplash.BD.EstructuraBD;
+import tienda.app.splash.aplicacionsplash.BD.HelperBD;
+import tienda.app.splash.aplicacionsplash.R;
 
 /**
  * Clase que muestra los datos de la base de datos, los productos agregados al carrito
