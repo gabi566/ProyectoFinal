@@ -4,6 +4,7 @@ package tienda.app.splash.aplicacionsplash.Activitys;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import tienda.app.splash.aplicacionsplash.R;
 
 public class Login extends AppCompatActivity {
     Button btn_ir_crearCuenta;
+    MediaPlayer mp,mp2;
     private RadioButton RBsesion;
     private boolean isActivateRadioButton;
     private static final String STRING_PREFERENCES = "tienda.app.splash.aplicacionsplash.SharedPreferences";
@@ -52,6 +54,7 @@ public class Login extends AppCompatActivity {
         btn_ir_crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 startActivity(new Intent(Login.this,SignUp.class));
                 finish();
             }
@@ -70,10 +73,12 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        mp = MediaPlayer.create(this,R.raw.lock);
+        mp2 = MediaPlayer.create(this,R.raw.win);
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
                 guardarEstadoButtom();
                 final String usuario = usuariot.getText().toString();
                 final String clave = clavet.getText().toString();
@@ -97,6 +102,7 @@ public class Login extends AppCompatActivity {
                                 Login.this.startActivity(bienvenido);
                                 finish();
                             }else {
+                                mp2.start();
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                                 alerta.setMessage("Usuario o contraseña incorrectos").setNegativeButton("Reintentar",null).create().show();
                             }

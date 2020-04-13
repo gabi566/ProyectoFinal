@@ -1,6 +1,7 @@
 package tienda.app.splash.aplicacionsplash.Activitys;
 
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class SignUp extends AppCompatActivity {
 
     EditText etnombre,etusuario,etpassword,etedad;
     Button btn_registrar,btn_ir_inicioSesion;
+    MediaPlayer mp,mp2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,14 @@ public class SignUp extends AppCompatActivity {
         etpassword = findViewById(R.id.et_password);
         etedad = findViewById(R.id.et_edad);
 
+        mp = MediaPlayer.create(this,R.raw.lock);
+        mp2 = MediaPlayer.create(this,R.raw.win);
         btn_ir_inicioSesion = (Button) findViewById(R.id.btn_ir_inicioSesion);
         btn_ir_inicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SignUp.this,Login.class));
+                mp.start();
                 finish();
             }
         });
@@ -50,6 +55,7 @@ public class SignUp extends AppCompatActivity {
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
                 final String nombre = etnombre.getText().toString().trim();
                 final String usuario = etusuario.getText().toString().trim();
                 final String clave = etpassword.getText().toString().trim();
@@ -64,12 +70,16 @@ public class SignUp extends AppCompatActivity {
                             boolean ok = jsonrespuesta.getBoolean("success");
                             if (nombre.isEmpty()){
                                 etnombre.setError("Nombre Obligatorio");
+                                mp2.start();
                             } else if (usuario.isEmpty()){
                                 etusuario.setError("Usuario Obligatorio");
+                                mp2.start();
                             }else if (clave.isEmpty()){
                                 etpassword.setError("Contraseña Obligatorio");
+                                mp2.start();
                             } else if (edad.isEmpty()){
                                 etedad.setError("Telefono Obligatorio");
+                                mp2.start();
                             } else if (ok == true) {
                                 AlertDialog.Builder alerta3 = new AlertDialog.Builder(SignUp.this);
                                 alerta3.setMessage("Registrando cuenta...").setNegativeButton("Aceptar",null).create().show();
