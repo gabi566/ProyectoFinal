@@ -1,5 +1,6 @@
 package tienda.app.splash.aplicacionsplash.Activitys;
 
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,6 +28,7 @@ public class SignUp extends AppCompatActivity {
     EditText etnombre,etusuario,etpassword,etedad;
     Button btn_registrar,btn_ir_inicioSesion;
     MediaPlayer mp,mp2;
+    private ProgressDialog mPdLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,8 @@ public class SignUp extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        mPdLogin = new ProgressDialog(this);
 
         etnombre = findViewById(R.id.et_nombre);
         etusuario = findViewById(R.id.et_usuario);
@@ -56,6 +61,8 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mp.start();
+                mPdLogin.setMessage("Validando datos ...");
+                mPdLogin.show();
                 final String nombre = etnombre.getText().toString().trim();
                 final String usuario = etusuario.getText().toString().trim();
                 final String clave = etpassword.getText().toString().trim();
@@ -71,21 +78,26 @@ public class SignUp extends AppCompatActivity {
                             if (nombre.isEmpty()){
                                 etnombre.setError("Nombre Obligatorio");
                                 mp2.start();
+                                mPdLogin.dismiss();
                             } else if (usuario.isEmpty()){
                                 etusuario.setError("Usuario Obligatorio");
                                 mp2.start();
+                                mPdLogin.dismiss();
                             }else if (clave.isEmpty()){
                                 etpassword.setError("Contraseña Obligatorio");
                                 mp2.start();
+                                mPdLogin.dismiss();
                             } else if (edad.isEmpty()){
                                 etedad.setError("Telefono Obligatorio");
                                 mp2.start();
+                                mPdLogin.dismiss();
                             } else if (ok == true) {
-                                AlertDialog.Builder alerta3 = new AlertDialog.Builder(SignUp.this);
-                                alerta3.setMessage("Registrando cuenta...").setNegativeButton("Aceptar",null).create().show();
+
                                 Intent i = new Intent(SignUp.this, Login.class);
                                 SignUp.this.startActivity(i);
+                                mPdLogin.dismiss();
                                 finish();
+                                Toast.makeText(SignUp.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                             }
                         }catch (Exception e) {
                             AlertDialog.Builder alerta2 = new AlertDialog.Builder(SignUp.this);

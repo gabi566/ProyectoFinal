@@ -1,6 +1,7 @@
 package tienda.app.splash.aplicacionsplash.Activitys;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     Button btn_ir_crearCuenta;
     MediaPlayer mp,mp2;
     private RadioButton RBsesion;
+    private ProgressDialog mPdLogin;
     private boolean isActivateRadioButton;
     private static final String STRING_PREFERENCES = "tienda.app.splash.aplicacionsplash.SharedPreferences";
     private static final String PREFERENCES_ESTADO_BUTTOM = "estado.Buttom.sesion";
@@ -39,6 +41,8 @@ public class Login extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        mPdLogin = new ProgressDialog(this);
 
         if(obtenerEstadoButtom()){
             Intent bienvenido = new Intent(Login.this, MenuPrincipal.class);
@@ -79,6 +83,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mp.start();
+                mPdLogin.setMessage("Iniciando sesion...");
+                mPdLogin.show();
                 guardarEstadoButtom();
                 final String usuario = usuariot.getText().toString();
                 final String clave = clavet.getText().toString();
@@ -93,16 +99,20 @@ public class Login extends AppCompatActivity {
                             if
                             (usuario.isEmpty()){
                                 usuariot.setError("Usuario Obligatorio");
+                                mp2.start();
+                                mPdLogin.dismiss();
                             }else if(clave.isEmpty()){
                                 clavet.setError("Contraseña Obligatoria");
+                                mp2.start();
+                                mPdLogin.dismiss();
                             }else if(ok==true) {
-                                AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
-                                alerta.setMessage("Cargando...").setNegativeButton("Reintentar",null).create().show();
                                 Intent bienvenido = new Intent(Login.this, MenuPrincipal.class);
                                 Login.this.startActivity(bienvenido);
+                                mPdLogin.dismiss();
                                 finish();
                             }else {
                                 mp2.start();
+                                mPdLogin.dismiss();
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                                 alerta.setMessage("Usuario o contraseña incorrectos").setNegativeButton("Reintentar",null).create().show();
                             }
