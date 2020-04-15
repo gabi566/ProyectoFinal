@@ -17,13 +17,13 @@
         <activity android:name=".WebViews.Main2Activity" />
         <activity
             android:name=".Activitys.Activity3"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".Activitys.MenuPrincipal"/>
         <activity
             android:name=".Activitys.ActivityStore"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".Activitys.MenuPrincipal"/>
         <activity
             android:name=".Activitys.Activity2"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".Activitys.MenuPrincipal"/>
         <activity
             android:name=".Activitys.MenuPrincipal"
             android:screenOrientation="portrait" />

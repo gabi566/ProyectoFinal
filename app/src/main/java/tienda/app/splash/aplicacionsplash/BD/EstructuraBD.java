@@ -1,14 +1,8 @@
 package tienda.app.splash.aplicacionsplash.BD;
 
-/**
- * Clase encargada de la definición de la estructura de la base de datos SQLite
- * @author Bastian Vidal
- * @version 22-09-2018
- */
+
 public class EstructuraBD {
-    /**
-     * Constructor por defecto
-     */
+
     private EstructuraBD() {}
 
     //Declaración de constantes que contienen la información correspondiente a la estructura de la base de datos
