@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".WebViews.AcercaActivity" />
-        <activity android:name=".WebViews.Main4Activity" />
-        <activity android:name=".WebViews.Main3Activity" />
-        <activity android:name=".WebViews.Main2Activity" />
+        <activity android:name=".WebViews.AcercaActivity" android:parentActivityName=".WebViews.AcercaActivity"/>
+        <activity android:name=".WebViews.Main4Activity" android:parentActivityName=".WebViews.AcercaActivity"/>
+        <activity android:name=".WebViews.Main3Activity" android:parentActivityName=".WebViews.AcercaActivity"/>
+        <activity android:name=".WebViews.Main2Activity" android:parentActivityName=".WebViews.AcercaActivity"/>
         <activity
             android:name=".Activitys.Activity3"
             android:screenOrientation="portrait" android:parentActivityName=".Activitys.MenuPrincipal"/>

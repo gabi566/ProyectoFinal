@@ -16,6 +16,7 @@ public class AcercaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acerca);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ir_facebook=findViewById(R.id.ir_facebook);
         ir_facebook.setOnClickListener(new View.OnClickListener() {
             @Override

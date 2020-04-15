@@ -19,6 +19,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         webView = (WebView) findViewById(R.id.webView);
         bar=(ProgressBar) findViewById(R.id.progressBar2);
         webView.setWebViewClient(new myWebclient());
