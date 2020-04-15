@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import tienda.app.splash.aplicacionsplash.BD.EstructuraBD;
 import tienda.app.splash.aplicacionsplash.BD.HelperBD;
@@ -26,6 +27,7 @@ public class MenuPrincipal extends AppCompatActivity {
     private ListView lista;
     private SharedPreferences prefs;
     private ImageButton carrito;
+    private boolean canExitApp = false;
 
 
     @Override
@@ -38,6 +40,8 @@ public class MenuPrincipal extends AppCompatActivity {
         //INSTANCIAR OBJETOS DE XML A JAVA
         lista = findViewById(R.id.opciones);
         carrito = findViewById(R.id.btnCarrito);
+
+
 
 
         //MÉTODO QUE NOS PERMITE ACCEDER A UN ACTIVITY SEGUN LA SELECCIÓN HECHA
@@ -66,7 +70,23 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+
+
     }//Fin onCreate()
+
+    private static final int INTERVALO = 2000; //2 segundos para salir
+    private long tiempoPrimerClick;
+
+    @Override
+    public void onBackPressed(){
+        if (tiempoPrimerClick + INTERVALO > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(this, "Vuelve a presionar para salir", Toast.LENGTH_SHORT).show();
+        }
+        tiempoPrimerClick = System.currentTimeMillis();
+    }
 
 
 
@@ -111,30 +131,11 @@ public class MenuPrincipal extends AppCompatActivity {
 
 
 
-    boolean doubleBackPressed=false;
-    @Override
-    public void onBackPressed() {
 
-        if(doubleBackPressed) {
-            super.onBackPressed();
-        }
-        else {
-            doubleBackPressed=true;
-            final CoordinatorLayout coordinatorLayout = (CoordinatorLayout)findViewById(R.id.coordinatorLayout);
-
-            Snackbar.make(coordinatorLayout,getString(R.string.pressbackagain), Snackbar.LENGTH_SHORT).show();
-            new android.os.Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    doubleBackPressed=false;
-                }
-            },2000);
-
-        }
-
-    }
 
 
 
 }//Fin Class
+
+
 
