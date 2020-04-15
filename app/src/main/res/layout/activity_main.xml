@@ -39,7 +39,7 @@
             android:elevation="5dp"
             android:layout_marginBottom="30dp"
             android:textSize="16dp"
-            android:text="Iniciar Sesión"/>
+            android:text="Iniciarr Sesión"/>
 
         <Button
             android:id="@+id/btn_acerca"
