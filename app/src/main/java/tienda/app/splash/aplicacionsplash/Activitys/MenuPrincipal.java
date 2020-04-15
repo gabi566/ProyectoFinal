@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import tienda.app.splash.aplicacionsplash.BD.EstructuraBD;
@@ -24,6 +25,7 @@ public class MenuPrincipal extends AppCompatActivity {
     //DECLARACION DE VARIABLES
     private ListView lista;
     private SharedPreferences prefs;
+    private ImageButton carrito;
 
 
     @Override
@@ -32,11 +34,11 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
 
 
-
         prefs = getSharedPreferences("tienda.app.splash.aplicacionsplash.SharedPreferences", Context.MODE_PRIVATE);
-
         //INSTANCIAR OBJETOS DE XML A JAVA
         lista = findViewById(R.id.opciones);
+        carrito = findViewById(R.id.btnCarrito);
+
 
         //MÉTODO QUE NOS PERMITE ACCEDER A UN ACTIVITY SEGUN LA SELECCIÓN HECHA
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,15 +52,23 @@ public class MenuPrincipal extends AppCompatActivity {
                                                      intento.putExtra("posicion", position);
                                                      startActivity(intento);
 
-                                                 } else {//Caso contratio envía al ActivityStore que muestra el carrito
-                                                     Intent intento = new Intent(MenuPrincipal.this, ActivityStore.class);
-                                                     startActivity(intento);
-                                                 }//Fin If
+                                                 }
                                              }//Fin If
                                          }//Fin onItemClick()
                                      }//Fin setOnItem..
+
+
         );
+        carrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MenuPrincipal.this,ActivityStore.class));
+            }
+        });
+
     }//Fin onCreate()
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

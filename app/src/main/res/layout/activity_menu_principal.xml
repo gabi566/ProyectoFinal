@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/coordinatorLayout"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="tienda.app.splash.aplicacionsplash.Activitys.MenuPrincipal">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tienda.app.splash.aplicacionsplash.Activitys.MenuPrincipal">
 
-        <ListView
-            android:id="@+id/opciones"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:entries="@array/opciones"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+    <ListView
+        android:id="@+id/opciones"
+        android:layout_width="414dp"
+        android:layout_height="423dp"
+        android:entries="@array/opciones" />
+
+    <ImageButton
+        android:id="@+id/btnCarrito"
+        android:layout_width="91dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/carrito" />
 
 
-
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>
 

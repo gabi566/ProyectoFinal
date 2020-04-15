@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getSupportActionBar().hide();
 
         mp = MediaPlayer.create(this,R.raw.lock);
         ir_login=findViewById(R.id.ir_login);

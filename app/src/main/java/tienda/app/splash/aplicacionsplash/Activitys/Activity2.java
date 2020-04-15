@@ -23,6 +23,8 @@ public class Activity2 extends AppCompatActivity {
     ListView listaPizzas;
     public static int pos;
 
+
+
     @Override
     /**
      * Método de creación del activity por defecto

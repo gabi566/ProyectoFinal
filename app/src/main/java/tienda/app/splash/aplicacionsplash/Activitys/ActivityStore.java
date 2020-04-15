@@ -124,7 +124,7 @@ public class ActivityStore extends AppCompatActivity {
             //Se informa por pantalla que el carrito ha sido vaciado
             Toast.makeText(this,"SE HA VACIADO EL CARRITO",Toast.LENGTH_LONG).show();
             //Se inicia la Activity MainActivity
-            Intent intento = new Intent(this,Activity2.class);
+            Intent intento = new Intent(this,MenuPrincipal.class);
             startActivity(intento);
             ActivityStore.this.finish();
         }//Fin Try-Catch
