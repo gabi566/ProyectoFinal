@@ -25,7 +25,7 @@ import tienda.app.splash.aplicacionsplash.clases.RegisterRequest;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText etnombre,etusuario,etpassword,etedad;
+    EditText etnombre,etusuario,etpassword,etedad,etdireccion;
     Button btn_registrar,btn_ir_inicioSesion;
     MediaPlayer mp,mp2;
     private ProgressDialog mPdLogin;
@@ -43,6 +43,7 @@ public class SignUp extends AppCompatActivity {
         etusuario = findViewById(R.id.et_usuario);
         etpassword = findViewById(R.id.et_password);
         etedad = findViewById(R.id.et_edad);
+        etdireccion = findViewById(R.id.et_direccion);
 
         mp = MediaPlayer.create(this,R.raw.lock);
         mp2 = MediaPlayer.create(this,R.raw.win);
@@ -67,6 +68,7 @@ public class SignUp extends AppCompatActivity {
                 final String usuario = etusuario.getText().toString().trim();
                 final String clave = etpassword.getText().toString().trim();
                 final String edad = etedad.getText().toString().trim();
+                final String direccion = etdireccion.getText().toString().trim();
 
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
@@ -91,7 +93,11 @@ public class SignUp extends AppCompatActivity {
                                 etedad.setError("Telefono Obligatorio");
                                 mp2.start();
                                 mPdLogin.dismiss();
-                            } else if (ok == true) {
+                            }  else if (direccion.isEmpty()) {
+                                etdireccion.setError("Direccion Obligatorio");
+                                mp2.start();
+                                mPdLogin.dismiss();
+                            }else if (ok == true) {
 
                                 Intent i = new Intent(SignUp.this, Login.class);
                                 SignUp.this.startActivity(i);
@@ -106,7 +112,7 @@ public class SignUp extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest r = new RegisterRequest(nombre,usuario,clave,edad,respuesta);
+                RegisterRequest r = new RegisterRequest(nombre,usuario,clave,edad,direccion,respuesta);
                 RequestQueue cola = Volley.newRequestQueue(SignUp.this);
                 cola.add(r);
             }
