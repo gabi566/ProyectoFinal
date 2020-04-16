@@ -1,6 +1,7 @@
 package tienda.app.splash.aplicacionsplash.Activitys;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ public class ActivityStore extends AppCompatActivity {
     Cursor cursor;
     ListView lista;
     TextView total;
+    Button btnconfirmar;
+    private ProgressDialog mPdConfirmar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,23 @@ public class ActivityStore extends AppCompatActivity {
         setContentView(R.layout.activity_store);
         definirLista();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mPdConfirmar = new ProgressDialog(this);
+        btnconfirmar = findViewById(R.id.btn_confirmar);
+
+
+        btnconfirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPdConfirmar.setMessage("Solicitando Pedido...");
+                mPdConfirmar.show();
+                Toast.makeText(ActivityStore.this, "Pedido solicitado correctamente", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
     }
+
+
 
 
     public void ejecutarQuery(){

@@ -81,9 +81,13 @@ public class MenuPrincipal extends AppCompatActivity {
     public void onBackPressed(){
         if (tiempoPrimerClick + INTERVALO > System.currentTimeMillis()){
             super.onBackPressed();
+            HelperBD helper = new HelperBD(this);
+            SQLiteDatabase db = helper.getReadableDatabase();
+            db.execSQL(EstructuraBD.SQL_DELETE_REGISTERS);
             return;
         }else {
             Toast.makeText(this, "Vuelve a presionar para salir", Toast.LENGTH_SHORT).show();
+
         }
         tiempoPrimerClick = System.currentTimeMillis();
     }
